@@ -5,21 +5,17 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - '**.py'
-  workflow_dispatch:
 
-# CRITICAL: Permissions to fix 403 errors
 permissions:
   contents: read
   pull-requests: write
-  issues: write
 
 jobs:
   security-scan:
-    name: Run NeuraShield Analysis
     uses: AaryaSoni-web/neurashield-ai/.github/workflows/reusable-analysis.yml@main
     with:
       source-repo: ${{ github.repository }}
       pr-number: ${{ github.event.pull_request.number }}
-      issue-number: ${{ github.event.issue.number }}
+      max-files: 20
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
