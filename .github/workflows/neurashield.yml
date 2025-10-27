@@ -7,11 +7,8 @@ on:
       - '**.py'
   workflow_dispatch:
 
-# CRITICAL: Permissions to fix 403 errors
-permissions:
-  contents: read
-  pull-requests: write
-  issues: write
+# DO NOT set permissions here - let the reusable workflow handle them
+# This is the fix for the "is only allowed 'issues: none'" error
 
 jobs:
   security-scan:
