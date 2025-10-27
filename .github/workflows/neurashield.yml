@@ -18,6 +18,5 @@ jobs:
     with:
       source-repo: ${{ github.repository }}
       pr-number: ${{ github.event.pull_request.number }}
-      issue-number: ${{ github.event.issue.number }}
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
