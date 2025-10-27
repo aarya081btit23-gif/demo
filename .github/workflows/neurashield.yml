@@ -7,17 +7,17 @@ on:
       - '**.py'
   workflow_dispatch:
 
-# DO NOT set permissions here - let the reusable workflow handle them
-# This is the fix for the "is only allowed 'issues: none'" error
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
 
 jobs:
   security-scan:
-    name: Run NeuraShield Analysis
     uses: AaryaSoni-web/neurashield-ai/.github/workflows/reusable-analysis.yml@main
     with:
       source-repo: ${{ github.repository }}
       pr-number: ${{ github.event.pull_request.number }}
       issue-number: ${{ github.event.issue.number }}
-      max-files: 20
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
