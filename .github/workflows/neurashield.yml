@@ -17,8 +17,6 @@ jobs:
     uses: AaryaSoni-web/neurashield-ai/.github/workflows/reusable-analysis.yml@main
     with:
       source-repo: ${{ github.repository }}
-      pr-number: ${{ github.event.pull_request.number }}
-      issue-number: ${{ github.event.issue.number }}
+      pr-number: ${{ github.event.pull_request.number || github.event.issue.number || 0 }}
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
