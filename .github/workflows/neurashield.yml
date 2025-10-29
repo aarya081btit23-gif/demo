@@ -21,3 +21,4 @@ jobs:
       issue-number: ${{ github.event.issue.number }}
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
